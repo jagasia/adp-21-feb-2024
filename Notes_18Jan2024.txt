@@ -1,0 +1,57 @@
+Trainer name: Jagadeeswaran .R
+
+Timings:
+10:00 to 19:00
+
+lunch break:	14:00 - 15:00
+
+SDLC
+	Software Development Life Cycle
+		Requirements Gathering
+		Planning
+		Designing
+		Development
+		Testing
+		Deployment
+		Maintenance
+
+
+Rational Unified Process
+		Inception
+		Ellaboration
+		Construction
+		Transition
+
+Inception
+	Conception
+
+
+
+
+Activity:
+User-centric Design
+
+it is an iterative process.
+designers mainly focus on users in each ways
+	we observe the users,	what they		(empathy map)
+		say
+		do
+		think
+		feel
+
+use some tools like
+	brainstorm
+	service blue print
+
+Activity:
+Group formed around 4 members, each to create Journey map and Empathy map for particular project scenario.
+
+
+
+Customer Journey Map stages:
+	Awareness
+	Consideration
+	Decision
+	Retention
+	Loyality
+

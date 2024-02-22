@@ -1,0 +1,147 @@
+Docker 
+--------
+Docker can be installed in a system where virtualization is enabled (hyper-v)
+
+download and install 
+	Docker Desktop for windows
+
+after installation
+	docker -v
+
+to start docker engine:
+	open docker desktop
+
+--------------------
+Docker image and container
+
+what is a docker image?
+	it is the containerized application that contains
+		application/project
+		runtime
+		system files required to run the project
+
+what is docker container?
+	when you run the docker image, it becomes a container
+	container is the running instance of a docker image
+
+to see the list of docker images in our system?
+	docker images
+	docker image ls
+
+to see the list of docker containers currently running in our system?
+	docker ps
+	docker container ls
+
+to remove a docker container:
+	docker rm <<container id>>
+	docker rm -f <<container id>>
+
+Learn to run an existing docker image:
+	hub.docker.com
+
+to pull a docker image from hub.docker.com to local repository:
+	docker pull
+	
+to run a docker image present in remote repository:
+	docker run
+
+this will check if docker images is present locally or not. if not, it will do a docker pull
+
+to remove a docker image from local repository:
+	docker rmi <<image name>>
+
+we are not able to remove the image, because, this image is run as a container now. it is running.
+how to find the docker container id?????
+	docker ps
+
+
+
+
+in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+in28min
+	is the name of the account in hub.docker.com
+
+todo-rest-api-h2
+	is the name of the image
+
+1.0.0.RELEASE
+	is the tag name
+
+
+jagindia/jf028-rest-api1
+
+--------------------------
+you learned to run a docker image which is present in hub.docker.com
+
+How to create our own docker image of spring boot rest api???????????
+	simplest way, (when you use spring boot)
+
+		go to cmd where pom.xml is present
+			mvn spring-boot:build-image
+
+	another approach:
+		using Dockerfile
+
+create a Dockerfile		(ideally, in project root where pom.xml is present)
+FROM java:8
+EXPOSE 5010
+ADD target/21-rest-demo-0.0.1-SNAPSHOT.jar 21-rest-demo-0.0.1-SNAPSHOT.jar 
+ENTRYPOINT ["java","-jar","21-rest-demo-0.0.1-SNAPSHOT.jar"]
+
+
+docker build -t 21-rest-demo .
+
+docker run -p 8010:5010 21-rest-demo:latest
+
+after creating the docker image, 
+we need to push this image to hub.docker.com so that
+others will be able to pull and run in their system.
+
+1) create a repository in hub.docker.com
+	jagindia/21-rest-demo
+
+2) now, tag the local image to remote repository
+	docker tag 21-rest-demo jagindia/21-rest-demo
+3) push 
+	docker push jagindia/21-rest-demo
+--------------------------------------
+our project uses mysql
+
+1) we can run 2 docker images together using
+	docker compose
+2) using same network
+	docker network
+
+
+
+
+
+
+
+docker container run --network jag-network --name 21-feb-docker-container -p 5000:5000 -d 21-feb-docker
+
+--------------------------
+using docker compose yml file:
+
+
+
+
+version: "3"
+services:
+  employee-jdbc:
+    image: 21-feb-docker
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysqldb
+ 
+  mysql101:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=adp
+
+networks:
+  employee-mysql: 
+
